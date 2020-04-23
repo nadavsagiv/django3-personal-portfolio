@@ -1,0 +1,35 @@
+{% extends 'personal_portfolio/base.html' %}
+
+{% block content %}
+    <div class="text-center">
+        
+            {% load static %}
+            <img class="img-thumbnail w-25 mh-25 mx-auto d-block" src="{% static 'portfolio/_DSC0015.jpg' %}">
+            <img src="{% static 'portfolio/LOGO.png' %}" style=" width: 200px;" href="#"><br>
+            <em>
+                Michael Sagiv is an Entrepreneur, Podcaster and Content Creator, <br> Profficent in Music Production, Python Programming & Graphic Design.
+                
+            </em>
+    </div>
+
+    <br>
+    <h2 class="ml-5">Portfolio</h2>
+        <hr class="style4">
+
+            <div class="row justify-content-center mt-5">
+                {% for project in projects %}
+                <div class="col-lg-3 col-md-2 mx-2">
+                
+                <h2 class="text-center">{{ project.title }}</h2>
+                <p class="text-center"><em>{{ project.description|truncatechars:40 }}</em></p>
+                <img src="{{ project.image.url }}" class="img-thumbnail mb-2 w-30">
+
+                {% if project.url %}
+                {% endif %}
+                </div>    
+                {% endfor %}
+            </div>
+    <br>
+        <hr class="style4">
+    <br>
+    {% endblock %}
